@@ -20,6 +20,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
@@ -34,15 +35,16 @@ DJANGO_APPS = [
 
 THIRD_PARTY = [
     'rest_framework',
-    'rest_framework_swagger',
     'django_filters',
     'djoser',
     'corsheaders',
-    'versatileimagefield',
+    'drf_yasg',
+
 ]
 
 LOCAL_APPS = [
     'cars',
+    'users',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + LOCAL_APPS

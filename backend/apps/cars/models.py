@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User
 
 
 class Car(models.Model):
@@ -21,6 +21,10 @@ class Car(models.Model):
     number = models.CharField(
         max_length = 6,
         unique=True
+    )
+
+    is_active = models.BooleanField(
+        default=False
     )
 
     def __str__(self):

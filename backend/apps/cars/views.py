@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .serializers import CarSeriliazer
 from .models import Car
 from .permissions import ListCreateCar

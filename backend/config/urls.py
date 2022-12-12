@@ -3,6 +3,7 @@ from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 from rest_framework import permissions
 from cars.views import CarModelViewSet
+from callings.views import CallModelViewSet
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -23,6 +24,7 @@ schema_view = get_schema_view(
 
 router = DefaultRouter()
 router.register('car', CarModelViewSet, basename='car')
+router.register('call',CallModelViewSet, basename='call' )
 
 
 urlpatterns = [

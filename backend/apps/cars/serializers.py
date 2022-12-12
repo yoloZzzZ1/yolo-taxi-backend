@@ -16,3 +16,8 @@ class CarSeriliazer(serializers.ModelSerializer):
     def create(self, validated_data):
         return check_car_add(validated_data=validated_data)
 
+
+
+
+
+        

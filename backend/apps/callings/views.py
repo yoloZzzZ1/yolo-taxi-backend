@@ -7,6 +7,7 @@ from random import randint
 from . permissions import IsTaxiOrReadOnly
 
 
+
 class CallModelViewSet(
     mixins.CreateModelMixin, mixins.UpdateModelMixin,
     mixins.ListModelMixin, viewsets.GenericViewSet
@@ -23,12 +24,15 @@ class CallModelViewSet(
     permission_classes = [IsTaxiOrReadOnly]
 
     def get_queryset(self):
-        return filter_objects(Call, is_finished=False, user=self.request.user)
+        if self.request.user.is_taxi == True:
+            return filter_objects(Call, is_finished=False, car__driver=self.request.user.id)
+        else:
+            return filter_objects(Call, is_finished=False, user=self.request.user)
 
     def perform_create(self, serializer):
-        user = self.request.user
         free_drivers = filter_objects(Car, is_active=False).count()
         random_driver = filter_objects(Car, is_active=False)[randint(0, free_drivers - 1)]
+        user = self.request.user
         serializer.save(user=user, car=random_driver)
         random_driver.is_active = True
         random_driver.save()

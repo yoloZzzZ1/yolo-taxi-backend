@@ -17,3 +17,17 @@ class CallingsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return check_call_add(validated_data=validated_data)    
+
+
+class CallingsSerializerForDriver(serializers.ModelSerializer):
+
+    user = SlugRelatedField(slug_field='first_name', read_only=True)
+    car = CarSeriliazer(read_only=True)
+
+    class Meta:
+        model = models.Call
+        fields = '__all__'
+        read_only_fields = ['adress']
+
+    def create(self, validated_data):
+        return check_call_add(validated_data=validated_data)    

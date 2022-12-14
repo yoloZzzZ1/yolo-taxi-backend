@@ -6,3 +6,4 @@ from django.db import models
 
 class User(AbstractUser):
     is_taxi = models.BooleanField(default=False)
+    

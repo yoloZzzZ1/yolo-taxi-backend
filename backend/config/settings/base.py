@@ -35,9 +35,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY = [
     'rest_framework',
-    'django_filters',
     'djoser',
-    'corsheaders',
     'drf_yasg',
 
 ]
@@ -132,3 +130,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
